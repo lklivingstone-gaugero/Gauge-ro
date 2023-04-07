@@ -1,0 +1,20 @@
+{
+    "lowPressureSwitch":"100.0",
+    "inputFlowSensor":"100.0",
+    "turbiditySensor_SedimentFilter":"100.0",
+    "tdsSensor_RoInput":"100.0",
+    "solenoidValve_InletRoPump1":"100.0",
+    "roPump":"100.0",
+    "pressureSensor":"100.0",
+    "tdsSensor_RoOutlet":"100.0",
+    "tdsSensor_AlkalineOutlet":"100.0",
+    "flowSensor_AlkalineOutlet":"100",
+    "flowSensor_WasteWaterOutlet":"100",
+    "solenoidValve_InletRoPump2":"104.0",
+    "solenoidValve_OutletCarbonBlock":"102.0",
+    "solenoidValve_OutletRoWasteWater":"100.0",
+    "solenoidValve_OutletUvFilter":"10.0",
+    "leakageSensor":"100.0"
+}
+
+
