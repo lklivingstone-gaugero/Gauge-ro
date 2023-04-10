@@ -14,11 +14,11 @@ class userServices {
             const data={
                 id: utils.getUuid(),
                 email: userData.email,
-                countryCode: userData.country_code,
-                mobileNumber: userData.mobile_number,
-                firstName: userData.first_name,
-                lastName: userData.last_name,
-                isActive: false
+                country_code: userData.country_code,
+                mobile_number: userData.mobile_number,
+                first_name: userData.first_name,
+                last_name: userData.last_name,
+                is_active: false
             };
             await database.registerUser(data);
         } catch (error) {

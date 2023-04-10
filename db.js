@@ -1,15 +1,24 @@
-import { Client } from "cassandra-driver";
-import * as dotenv from 'dotenv';
-dotenv.config();
+import pg from "pg";
+const { Pool } = pg;
 
-const client = new Client({
-      cloud: {
-      secureConnectBundle: "./secure-connect-demo2.zip",
-      },
-      credentials: {
-      username: "ZWiLGWBUBymfOKLOCBCJyfqz",
-      password: "LR95o0z77W,H01ZdY_oa1OrlnQieDg.JLMPGEFKEzYJhZcxBjJ4H5wW93mpQpKi-ge8sF2EHW-legGtZsjL51s1-k6.5-G00tL2DIB4a6S4Khoh0z_7uPT3Kn_ZQ.rHn",
-      },
+const client = new Pool({
+      host: '142.93.217.188',
+      user: 'postgres',
+      port: 5432,
+      password: "secrectplus",
+      database: "TEST"
 });
 
-export default client;
+client.connect()
+
+// console.log("Connected")
+
+// client.query("SELECT * from testing", (err, res)=>{
+//       if (!err) {
+//             console.log(res.rows)
+//       } else {
+//             console.log(err.message)
+//       }
+// })
+
+export default client
