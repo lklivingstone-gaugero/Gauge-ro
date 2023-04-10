@@ -109,7 +109,7 @@ class database{
     const slotc = { isbooked: false };
     const slota = { isbooked: false };
     const slotb = { isbooked: false };
-    await client.query(workTableQuery, [plumberId, date, available, workCount, slota, slotb, slotc], { prepare: true });
+    await client.query(workTableQuery, [plumberId, date, available, workCount, slota, slotb, slotc]);
 
 } 
 
@@ -129,7 +129,7 @@ async findAvailableSlot(date){
   const query = `SELECT slota, slotb, slotc FROM demo2.work_table
   WHERE date = $1
   `;
-  const result = await client.query(query, [date], { prepare: true });
+  const result = await client.query(query, [date]);
   return result.rows;
 }
 
@@ -137,7 +137,7 @@ async workTableQuery(date,slot){
   // SELECT * FROM demo2.work_table1 WHERE date= '2023-03-23T00:00:00.000Z'  AND slota={complaintId:null,isbooked:false}
   const workTableQuery = `SELECT * FROM demo2.work_table WHERE date = $1 AND ${slot} = $2`;
   const params = [date, {complaintid:null,isbooked:false}];
-  const workTableResult = await client.query(workTableQuery, params, { prepare: true });
+  const workTableResult = await client.query(workTableQuery, params);
   return workTableResult;
 
 }
@@ -150,7 +150,7 @@ async updateComplaintQuery(complaintId,plumberId,slots,bookedSlot){
 async updateWorkTableQuery(date,slot,complaintId,plumberId,workCount){
   const updateWorkTableQuery = `UPDATE demo2.work_table SET ${slot} = $1, work_count = $2 WHERE plumber_id = $3 AND date = $4`;
   const slotData = {complaintid: complaintId, isbooked: true};
-  await client.query(updateWorkTableQuery, [slotData, workCount, plumberId, date], { prepare: true });
+  await client.query(updateWorkTableQuery, [slotData, workCount, plumberId, date]);
   
 }
 
@@ -174,7 +174,7 @@ async deleteComplaintQuery(complaintId){
 async deleteWorkTableQuery(slot,workCount,plumberId,date){
   const updateWorkTableQuery = `UPDATE demo2.work_table SET ${slot} = $1, work_count = $2 WHERE plumber_id = $3 AND date = $4`;
   const slotData = {complaintid: null, isbooked: false};
-  await client.query(updateWorkTableQuery, [slotData, workCount, plumberId, date], { prepare: true });
+  await client.query(updateWorkTableQuery, [slotData, workCount, plumberId, date]);
 }
 
 async isSolvedUser(complaintSolvedTime,complaintStatus,complaintId){
@@ -201,7 +201,7 @@ async updateFeebackInComplaintQuery(feedbackId,complaintId){
 async findAvailableSlotPEG(plumberId){
   const query = `SELECT date,slota, slotb, slotc FROM demo2.work_table
   WHERE plumber_id = $1`;
-  const result = await client.query(query, [plumberId], { prepare: true });
+  const result = await client.query(query, [plumberId]);
   return result.rows;
 }
 }
